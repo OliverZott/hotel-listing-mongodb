@@ -1,3 +1,4 @@
+using HotelListingAPI.Models;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,12 @@ builder.Services.AddCors(options =>
 });
 
 builder.Host.UseSerilog((context, configuration) => configuration.WriteTo.Console().ReadFrom.Configuration(context.Configuration));
+
+// configuration instance to which the appsettings.json section binds is registered to DI container
+builder.Services.Configure<HotelDatabaseSettings>(builder.Configuration.GetSection("HotelDatabase"));
+
+
+
 
 var app = builder.Build();
 
