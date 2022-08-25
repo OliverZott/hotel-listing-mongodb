@@ -18,6 +18,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("MyCorsPolicy", p => p.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 });
 
+
+// context ... things you can access through the builder ?!
 builder.Host.UseSerilog((context, configuration) => configuration.WriteTo.Console().ReadFrom.Configuration(context.Configuration));
 
 builder.Services.AddSingleton<HotelService>();

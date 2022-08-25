@@ -32,7 +32,7 @@ namespace HotelListingAPI.Services
         public async Task<List<Hotel>> GetAsync() =>
             await _hotelCollection.Find(_ => true).ToListAsync();
 
-        public async Task<Hotel> GetById(string id) =>
+        public async Task<Hotel?> GetById(string id) =>
             await _hotelCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
     }
 }
